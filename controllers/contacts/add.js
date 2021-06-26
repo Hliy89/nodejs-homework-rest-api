@@ -24,20 +24,6 @@ const add = (req, res) => {
       result: newContact,
     },
   })
-//   const file = fs.readFile(contactsPath)
-//   const data = JSON.parse(file)
-//   const newContact = { ...req.body, id: v4() }
-//   //   contacts.push(newContact)
-//   const newContactsList = [...data, newContact]
-//   const contactsStr = JSON.stringify(newContactsList)
-//   fs.writeFile(contactsPath, contactsStr)
-//   return res.status(201).json({
-//     status: 'success',
-//     code: 201,
-//     data: {
-//       result: newContact,
-//     },
-//   })
 }
 
 module.exports = add
