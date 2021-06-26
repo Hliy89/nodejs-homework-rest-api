@@ -8,10 +8,10 @@ router.get('/', ctrl.getAll)
 
 router.get('/:contactId', ctrl.getOne)
 
-// router.post('/', ctrl.add)
+router.post('/', express.json(), ctrl.add)
 
-// router.put('/:contactId', ctrl.update)
+router.put('/:contactId', express.json(), ctrl.update)
 
-// router.delete('/:contactId', ctrl.del)
+router.delete('/:contactId', ctrl.del)
 
 module.exports = router
