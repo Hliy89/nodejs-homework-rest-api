@@ -1,29 +1,18 @@
-const { v4 } = require('uuid')
+const { contact: service } = require('../../services')
 
-const { contactSchema } = require('../../utils/validateSchemas')
-const writeContacts = require('./writeContacts')
-const contacts = require('../../data/contacts.json')
-
-const add = (req, res) => {
-  const { error } = contactSchema.validate(req.body)
-  if (error) {
-    res.status(400).json({
-      status: 'error',
-      code: 404,
-      message: error.message,
+const add = async (req, res, next) => {
+  try {
+    const result = await service.add(req.body)
+    res.status(201).json({
+      status: 'success',
+      code: 201,
+      data: {
+        result: result,
+      },
     })
-    return
+  } catch (error) {
+    next(error)
   }
-  const newContact = { ...req.body, id: v4() }
-  contacts.push(newContact)
-  writeContacts(contacts)
-  res.status(201).json({
-    status: 'success',
-    code: 201,
-    data: {
-      result: newContact,
-    },
-  })
 }
 
 module.exports = add
