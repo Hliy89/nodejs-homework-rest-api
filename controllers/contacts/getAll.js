@@ -2,12 +2,12 @@ const { contact: service } = require('../../services')
 
 const getAll = async (req, res, next) => {
   try {
-    const result = await service.getAll({})
+    const userContacts = await service.getAll({ owner: req.user._id })
     res.json({
       status: 'success',
       code: 200,
       data: {
-        result
+        result: userContacts
       },
     })
   } catch (error) {

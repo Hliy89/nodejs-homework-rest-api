@@ -2,9 +2,10 @@ const { contact: service } = require('../../services')
 
 const getOne = async (req, res, next) => {
   const { contactId } = req.params
+  const { user } = req
   try {
-    const result = await service.getOne(contactId)
-    if (!result) {
+    const contact = await service.getOne({ _id: contactId, owner: user._id })
+    if (!contact) {
       return res.status(404).json({
         status: 'error',
         code: 404,
@@ -15,7 +16,7 @@ const getOne = async (req, res, next) => {
       status: 'success',
       code: 200,
       data: {
-        result
+        result: contact
       },
     })
   } catch (error) {
