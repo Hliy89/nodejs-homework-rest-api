@@ -1,7 +1,7 @@
 const { User } = require('../models')
 
 const getOne = (filter) => {
-  return User.find(filter)
+  return User.findOne(filter)
 }
 
 const getById = (id) => {
