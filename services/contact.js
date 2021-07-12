@@ -1,15 +1,15 @@
 const { Contact } = require('../models')
 
-const getAll = () => {
-  return Contact.find({})
+const getAll = (filter) => {
+  return Contact.find(filter)
 }
 
-const getOne = (id) => {
-  return Contact.findById(id)
+const getOne = (filter) => {
+  return Contact.findOne(filter)
 }
 
-const add = (body) => {
-  return Contact.create(body)
+const add = (newContact) => {
+  return Contact.create(newContact)
 }
 
 const update = (id, body) => {
