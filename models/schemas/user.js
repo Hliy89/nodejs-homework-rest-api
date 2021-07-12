@@ -30,4 +30,6 @@ userSchema.methods.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.password)
 }
 
+console.log(userSchema.methods)
+
 module.exports = userSchema

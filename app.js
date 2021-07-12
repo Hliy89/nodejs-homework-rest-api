@@ -18,6 +18,7 @@ app.use('/api/v1/auth', routes.auth)
 app.use('/api/v1/users', routes.users)
 
 app.use((req, res) => {
+  console.log(req.url)
   res.status(404).json({
     status: 'error',
     code: 404,

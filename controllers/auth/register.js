@@ -14,7 +14,9 @@ const register = async (req, res, next) => {
         message: 'Email in use'
       })
     }
+
     const data = await service.add({ email, password })
+    console.log(data)
     const { TOKEN_KEY } = process.env
     const payload = {
       id: data._id
