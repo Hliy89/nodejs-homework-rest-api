@@ -9,8 +9,6 @@ const routes = require('./api')
 
 const app = express()
 
-require('./configs/config-passport')
-
 app.use(cors())
 
 app.use('/api/v1/contacts', routes.contacts)
