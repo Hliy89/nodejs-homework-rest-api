@@ -1,5 +1,11 @@
 const contacts = require('./contacts')
+const auth = require('./auth')
+const users = require('./users')
 
-module.exports = {
-  contacts
+const router = {
+  contacts,
+  auth,
+  users
 }
+
+module.exports = router

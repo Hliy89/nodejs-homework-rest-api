@@ -14,8 +14,13 @@ const add = ({ email, password }) => {
   return newUser.save()
 }
 
+const update = (id, body) => {
+  return User.findByIdAndUpdate(id, body)
+}
+
 module.exports = {
   getOne,
   add,
-  getById
+  getById,
+  update
 }
