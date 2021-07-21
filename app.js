@@ -5,17 +5,17 @@ const cors = require('cors')
 // dotenv.config();
 require('dotenv').config()
 
-const routes = require('./api')
+const { contacts, auth, users } = require('./api')
 
 const app = express()
 
-require('./configs/config-passport')
-
 app.use(cors())
 
-app.use('/api/v1/contacts', routes.contacts)
-app.use('/api/v1/auth', routes.auth)
-app.use('/api/v1/users', routes.users)
+// require('./configs/passport-config.js')
+
+app.use('/api/v1/contacts', contacts)
+app.use('/api/v1/auth', auth)
+app.use('/api/v1/users', users)
 
 app.use((req, res) => {
   console.log(req.url)

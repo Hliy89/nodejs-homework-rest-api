@@ -1,0 +1,17 @@
+const bcryptjs = require('bcryptjs')
+const User = require('../../models/schemas/user')
+
+const createUser = async (req, res, next) => {
+  try {
+    const { body } = req
+    const hashedPassword = await bcryptjs.hash(body.password, 10)
+    const user = await User.create({
+      ...body,
+      password: hashedPassword
+    })
+    res.json(user)
+  } catch (error) {
+    next(error)
+  }
+}
+module.exports = createUser

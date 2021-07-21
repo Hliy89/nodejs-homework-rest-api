@@ -1,9 +1,12 @@
-const { users: service } = require('../../services')
+const User = require('../../models/schemas/user')
 
 const logout = async (req, res, next) => {
-  const { id } = req.user
+  const { _id } = req.user
   try {
-    await service.update(id, { ...req.user, token: null })
+    const update = (id, user) => {
+      return User.findByIdAndUpdate(id, user)
+    }
+    await update(_id, { ...req.user, token: null })
     res.json({
       status: 'success',
       code: 200,
