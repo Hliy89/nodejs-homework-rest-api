@@ -1,17 +1,21 @@
 const passport = require('passport')
 
-const auth = (req, res, next) => {
+require('../configs/passport-config')
+
+const useAuth = (req, res, next) => {
+  console.log(req)
   passport.authenticate('jwt', { session: false }, (error, user) => {
     if (!user || error) {
-      return res.status(401).json({
+      res.status(401).json({
         status: 'error',
         code: 401,
-        message: 'Unauthorize'
+        message: 'Not authorize',
       })
+      return
     }
     req.user = user
     next()
-  })
+  })(req, res, next)
 }
 
-module.exports = auth
+module.exports = useAuth
