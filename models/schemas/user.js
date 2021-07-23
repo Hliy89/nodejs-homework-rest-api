@@ -1,5 +1,6 @@
 const { Schema } = require('mongoose')
 const { model } = require('mongoose')
+const gravatar = require('gravatar')
 
 const userSchema = Schema({
   password: {
@@ -20,6 +21,16 @@ const userSchema = Schema({
     type: String,
     default: null,
   },
+  avatarURL: {
+    type: String,
+    default: function () {
+      return gravatar.url(this.email, { s: '250' }, true)
+    }
+  },
+  idCloudAvatar: {
+    type: String,
+    default: null,
+  }
 })
 
 const User = model('User', userSchema)

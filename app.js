@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
+// const fs = require('fs/promises')
+// const jimp = require('jimp')
 // const dotenv = require("dotenv");
 // dotenv.config();
 require('dotenv').config()
@@ -11,14 +14,39 @@ const app = express()
 
 app.use(cors())
 
-// require('./configs/passport-config.js')
+app.use(express.static(path.join(process.cwd(), 'public/avatars')))
+
+// const tempAvatars = path.join(process.cwd(), 'public/avatars')
+
+// const upload = require('./helpers/multer')
 
 app.use('/api/v1/contacts', contacts)
 app.use('/api/v1/auth', auth)
 app.use('/api/v1/users', users)
 
+// app.post('/api/v1/files/avatars', upload.single('avatar'), async (req, res, next) => {
+//   const { path: tempName, originalname } = req.file
+//   const img = await jimp.read(req.file.path)
+//   img.autocrop().cover(250, 250, jimp.HORIZONTAL_ALIGN_CENTER || jimp.VERTICAL_ALIGN_MIDDLE).writeAsync(req.file.path)
+//   const fileName = path.join(tempAvatars, originalname)
+//   try {
+//     await fs.rename(tempName, fileName)
+//     res.json({
+//       status: 'success',
+//       code: 200,
+//       data: {
+//         result: {
+//           avatar: fileName
+//         }
+//       }
+//     })
+//   } catch (error) {
+//     await fs.unlink(tempName)
+//     next(error)
+//   }
+// })
+
 app.use((req, res) => {
-  console.log(req.url)
   res.status(404).json({
     status: 'error',
     code: 404,
