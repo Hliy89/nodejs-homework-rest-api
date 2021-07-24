@@ -11,4 +11,6 @@ router.post('/login', express.json(), ctrl.login)
 
 router.post('/logout', useAuth, ctrl.logout)
 
+router.get('/verify/:token', ctrl.verifyUser)
+
 module.exports = router

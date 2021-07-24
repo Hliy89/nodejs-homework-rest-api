@@ -30,7 +30,11 @@ const userSchema = Schema({
   idCloudAvatar: {
     type: String,
     default: null,
-  }
+  },
+  isVerified: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const User = model('User', userSchema)

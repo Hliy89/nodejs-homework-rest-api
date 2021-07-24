@@ -8,6 +8,7 @@ const deleteUser = require('./deleteUser')
 const logout = require('./logout')
 const getCurrentUser = require('./getCurrentUser')
 const updateAvatar = require('./updateAvatar')
+const verifyUser = require('./verifyUser')
 
 module.exports = {
   createUser,
@@ -19,5 +20,6 @@ module.exports = {
   deleteUser,
   logout,
   getCurrentUser,
-  updateAvatar
+  updateAvatar,
+  verifyUser
 }
