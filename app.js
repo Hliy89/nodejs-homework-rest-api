@@ -2,10 +2,9 @@ const mongoose = require('mongoose')
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
+const sgMail = require('@sendgrid/mail')
 // const fs = require('fs/promises')
 // const jimp = require('jimp')
-// const dotenv = require("dotenv");
-// dotenv.config();
 require('dotenv').config()
 
 const { contacts, auth, users } = require('./api')
@@ -45,6 +44,25 @@ app.use('/api/v1/users', users)
 //     next(error)
 //   }
 // })
+
+sgMail.setApiKey(process.env.SENDGRID_KEY)
+
+// const msg = {
+//   to: 'hliy.yaroslav@gmail.com', // Change to your recipient
+//   from: 'hliy.yaroslav@gmail.com', // Change to your verified sender
+//   subject: 'Sending with SendGrid is Fun',
+//   text: 'easy to do anywhere, even with Node.js',
+//   html: '<strong>Easy to do anywhere, even with Node.js</strong>',
+// }
+
+// sgMail
+//   .send(msg)
+//   .then(() => {
+//     console.log('Email sent')
+//   })
+//   .catch((error) => {
+//     console.error(error)
+//   })
 
 app.use((req, res) => {
   res.status(404).json({
