@@ -91,5 +91,3 @@ mongoose.connect(DB_HOST, {
   const port = PORT || 3000
   app.listen(port)
 })
-
-// mongodb+srv://hliy:<password>@cluster0.ziavk.mongodb.net/<myFirstDatabase>?retryWrites=true&w=majority
