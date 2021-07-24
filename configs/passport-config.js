@@ -13,7 +13,6 @@ const settings = {
 
 passport.use(
   new Strategy(settings, async (payload, done) => {
-    console.log(payload)
     try {
       const user = await User.findById(payload.userId)
       if (!user) {

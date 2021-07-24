@@ -3,7 +3,6 @@ const passport = require('passport')
 require('../configs/passport-config')
 
 const useAuth = (req, res, next) => {
-  console.log(req)
   passport.authenticate('jwt', { session: false }, (error, user) => {
     if (!user || error) {
       res.status(401).json({
