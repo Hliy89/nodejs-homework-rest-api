@@ -9,6 +9,7 @@ const logout = require('./logout')
 const getCurrentUser = require('./getCurrentUser')
 const updateAvatar = require('./updateAvatar')
 const verifyUser = require('./verifyUser')
+const resendingEmail = require('./resendingEmail')
 
 module.exports = {
   createUser,
@@ -21,5 +22,6 @@ module.exports = {
   logout,
   getCurrentUser,
   updateAvatar,
-  verifyUser
+  verifyUser,
+  resendingEmail
 }

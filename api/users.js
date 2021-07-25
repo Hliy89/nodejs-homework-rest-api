@@ -20,4 +20,6 @@ router.patch('/avatar', useAuth, upload.single('avatar'), ctrl.updateAvatar)
 
 router.get('/verify/:token', ctrl.verifyUser)
 
+router.post('/verify', ctrl.resendingEmail)
+
 module.exports = router
