@@ -14,7 +14,7 @@ const createUser = async (req, res, next) => {
       password: hashedPassword
     })
 
-    const tokenData = await generateOneTimePassword(user.id)
+    const tokenData = await generateOneTimePassword(user._id)
     try {
       await sendVerificationEmail(user.email, tokenData.token)
     } catch (error) {
