@@ -18,4 +18,8 @@ router.get('/current', useAuth, ctrl.getCurrentUser)
 
 router.patch('/avatar', useAuth, upload.single('avatar'), ctrl.updateAvatar)
 
+router.post('/verify', express.json(), ctrl.resendingEmail)
+
+router.get('/verify/:token', ctrl.verifyUser)
+
 module.exports = router

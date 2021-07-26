@@ -19,9 +19,16 @@ const verifyUser = async (req, res) => {
   }
 
   user.isVerified = true
-  await user.save('Verification successful')
 
-  res.send('')
+  await user.save()
+
+  await Token.findByIdAndDelete(tokenData._id)
+
+  res.json({
+    status: 'success',
+    code: 200,
+    message: 'Your verification is successfull',
+  })
 }
 
 module.exports = verifyUser
