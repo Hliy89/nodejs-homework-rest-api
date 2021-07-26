@@ -2,7 +2,6 @@ const sendVerificationEmail = require('./sendVerificationEmail')
 const User = require('../../models/schemas/user')
 
 const resendingEmail = async (req, res, next) => {
-  console.log('req.body:', req.body)
   const { email } = req.body
   const { token } = req.params
 
